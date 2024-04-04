@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.logo{
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: 10px;
+  left: 10px;
+}
+
+.hometitle{
+  text-align: center;
+}
+
+.searchbox{
+  text-align: center;
+}
+
+.leftSectionHome h2{
+  text-align: center;
+}
+
+.rightSectionHome h2{
+  text-align: center;
+}
