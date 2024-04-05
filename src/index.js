@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import Directory from './Directory';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -9,6 +10,11 @@ root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
+);
+
+const directory = ReactDOM.createRoot(document.getElementById('directory'));
+directory.render(
+  <Directory></Directory>
 );
 
 // If you want to start measuring performance in your app, pass a function

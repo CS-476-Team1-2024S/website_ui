@@ -12,6 +12,22 @@ code {
     monospace;
 }
 
+#root {
+  position: relative;
+  left: 10vw;
+  width: 89vw;
+}
+
+#directory {
+  position: absolute;
+  top: 10vh;
+  left: 1vw;
+  width: 8vw;
+  height: 80vh;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
 .logo{
   position: absolute;
   width: 150px;
