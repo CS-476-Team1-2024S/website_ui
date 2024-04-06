@@ -5,7 +5,6 @@ import SearchBox from '../components/SearchBox';
 const Home = () => {
     return (
         <div class="homepage">
-            <img class="logo" src="images/logo.png" alt="Knowledgebase Site Logo"></img>
             <div class="hometitle">
                 <h1>Welcome to the _______ Wiki</h1>
                 <h3>Search for anything</h3>

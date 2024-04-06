@@ -12,7 +12,7 @@ root.render(
   </React.StrictMode>
 );
 
-const directory = ReactDOM.createRoot(document.getElementById('directory'));
+const directory = ReactDOM.createRoot(document.getElementById('sidebar'));
 directory.render(
   <Directory></Directory>
 );
