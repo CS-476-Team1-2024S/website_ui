@@ -4,8 +4,8 @@ const Directory = ({location}) => {
     // use path to figure out where we are in the directory listing of the website, then display the children and direct parents of the current webpage
     return (
         <>
-        <img class="logo" src="images/logo.png" alt="Knowledgebase Site Logo"></img>
-        <div id="directory">
+        <img className="logo" src="images/logo.png" alt="Knowledgebase Site Logo"></img>
+        <div className="directory">
         <table>
         <tbody>
             <tr><td><a href="/"><p>Home</p></a></td></tr>

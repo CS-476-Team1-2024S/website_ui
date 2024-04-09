@@ -24,7 +24,7 @@ code {
   left: 10px;
 }
 
-#directory {
+.directory {
   position: absolute;
   top: 180px;
   left: 10px;
@@ -36,26 +36,26 @@ code {
   border-radius: 5px;
 }
 
-#directory table {
+.directory table {
   position: relative;
   border-collapse: collapse;
   width: 100%;
 }
 
-#directory tbody {
+.directory tbody {
   width: 100%;
 }
 
-#directory td {
+.directory td {
   border-bottom: 1px solid grey;
 }
 
-#directory a {
+.directory a {
   color: black;
   text-decoration: none;
 }
 
-#directory p {
+.directory p {
   margin: 0;
 }
 

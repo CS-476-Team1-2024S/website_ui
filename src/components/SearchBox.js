@@ -13,7 +13,7 @@ const SearchBox = () => {
     };
 
     return (
-        <div class="searchbox">
+        <div className="searchbox">
             <input
                 type="text"
                 placeholder="Search for..."
