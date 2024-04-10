@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import Directory from './components/Directory';
 import reportWebVitals from './reportWebVitals';
+import Title from './components/Title';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +18,13 @@ directory.render(
   <Directory></Directory>
 );
 
-console.log(window.location.pathname);
+const title = window.location.pathname.split("/").pop();
+if (title !== "") {
+  const title_div = ReactDOM.createRoot(document.getElementById('title'));
+  title_div.render(
+    <Title title={title}/>
+  );
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

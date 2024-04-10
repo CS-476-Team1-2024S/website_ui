@@ -18,6 +18,11 @@ code {
   width: 89vw;
 }
 
+#title {
+  position: relative;
+  left: 10vw;
+}
+
 #sidebar {
   position: absolute;
   top: 10px;
