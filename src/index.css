@@ -1,4 +1,21 @@
+html[data-theme="light"] {
+  --text: rgb(2, 17, 18);
+  --background: rgb(246, 253, 254);
+  --primary: rgb(43, 200, 227);
+  --secondary: rgb(216, 131, 169);
+  --accent: rgb(160, 160, 107);
+}
+
+html[data-theme="dark"] {
+  --text: rgb(237, 252, 253);
+  --background: rgb(1, 8, 9);
+  --primary: rgb(28, 184, 212);
+  --secondary: rgb(124, 39, 77);
+  --accent: rgb(149, 149, 95);
+}
+
 body {
+  background-color: var(--background);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -86,4 +103,8 @@ code {
 
 .rightSectionHome h2{
   text-align: center;
+}
+
+.content div {
+  border: 1px solid crimson;
 }
