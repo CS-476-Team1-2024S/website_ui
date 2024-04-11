@@ -1,6 +1,6 @@
 {
   "name": "knowledgebase",
-  "homepage": ".",
+  "homepage": "/cs476/knowledgebase/DEV/ (Dev build) || /cs476/knowledgebase/PROD/ (Prod build) || . (Local development)",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
