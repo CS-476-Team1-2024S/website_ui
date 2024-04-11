@@ -25,6 +25,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "Upload to DEV": "pip install paramiko python-dotenv & python upload-to-webserver.py DEV",
+    "Upload to PROD": "pip install paramiko python-dotenv & python upload-to-webserver.py PROD",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
