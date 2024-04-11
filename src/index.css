@@ -42,7 +42,12 @@ code {
   left: 10vw;
 }
 
-#sidebar {
+#title {
+  position: relative;
+  left: 10vw;
+}
+
+#sideBar {
   position: absolute;
   top: 10px;
   left: 10px;
