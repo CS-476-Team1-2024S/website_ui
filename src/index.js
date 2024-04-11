@@ -19,7 +19,7 @@ directory.render(
 );
 
 const title = window.location.pathname.split("/").pop();
-if (title !== "") {
+if (title !== "" && title !== "about") {
   const title_div = ReactDOM.createRoot(document.getElementById('title'));
   title_div.render(
     <Title title={title}/>
