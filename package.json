@@ -1,6 +1,6 @@
 {
   "name": "knowledgebase",
-  "homepage": "http://washington.uww.edu/cs476/knowledgebase/DEV",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
