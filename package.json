@@ -6,6 +6,10 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-regular-svg-icons": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/material": "^5.15.15",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -21,6 +25,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "Upload to DEV": "pip install paramiko python-dotenv & python upload-to-webserver.py DEV",
+    "Upload to PROD": "pip install paramiko python-dotenv & python upload-to-webserver.py PROD",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
