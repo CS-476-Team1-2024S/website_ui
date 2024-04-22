@@ -2,7 +2,7 @@ import React from 'react';
 const Directory = ({ location }) => {
     return (
         <div className="sideBar">
-            <img className="logo" src="images/logo.png" alt="Knowledgebase Site Logo"></img>
+            <img className="logo" src="/images/logo.png" alt="Knowledgebase Site Logo"></img>
             <div id="directory">
                 <table>
                     <tbody>

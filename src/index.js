@@ -18,7 +18,14 @@ directory.render(
   <Directory></Directory>
 );
 
-const title = window.location.pathname.split("/").pop();
+let title = window.location.pathname.split("/").pop();
+
+/* For local testing */
+if (title.includes("%20(Prod%20build)%20%7C%7C%20.%20(Local%20development)")) {
+  title = title.split("%20(Prod%20build)%20%7C%7C%20.%20(Local%20development)")[1];
+}
+
+/* Actual title part */
 if (title !== "" && title !== "about") {
   const title_div = ReactDOM.createRoot(document.getElementById('title'));
   title_div.render(

@@ -8,10 +8,10 @@ html[data-theme="light"] {
 
 html[data-theme="dark"] {
   --text: rgb(237, 252, 253);
-  --background: rgb(1, 8, 9);
+  --background: rgb(34, 55, 68);
   --primary: rgb(28, 184, 212);
   --secondary: rgb(124, 39, 77);
-  --accent: rgb(149, 149, 95);
+  --accent: rgb(180, 152, 122);
 }
 
 body {
@@ -37,23 +37,30 @@ code {
   width: 89vw;
 }
 
-#title {
+#root .content {
   position: relative;
-  left: 10vw;
+  top: 40px;
 }
 
 #title {
   position: relative;
   left: 10vw;
+  top: 5vh;
 }
 
-#sideBar {
+#nav {
   position: absolute;
   top: 10px;
   left: 10px;
+  width: 8vw;
+  height: 90vh;
 }
 
-.directory {
+[data-theme="dark"] a:visited {
+  color: var(--accent);
+}
+
+#directory {
   position: absolute;
   top: 180px;
   left: 10px;
@@ -65,26 +72,26 @@ code {
   border-radius: 5px;
 }
 
-.directory table {
+#directory table {
   position: relative;
   border-collapse: collapse;
   width: 100%;
 }
 
-.directory tbody {
+#directory tbody {
   width: 100%;
 }
 
-.directory td {
+#directory td {
   border-bottom: 1px solid grey;
 }
 
-.directory a {
+#directory a {
   color: var(--text);
   text-decoration: none;
 }
 
-.directory p {
+#directory p {
   margin: 0;
 }
 
@@ -115,6 +122,8 @@ code {
 .content div {
   border: 1px solid crimson;
 }
+
+/* CSS for darkmode button after this point */
 
 .theme-button {
   position: absolute;
