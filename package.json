@@ -1,6 +1,6 @@
 {
   "name": "knowledgebase",
-  "homepage": "/cs476/knowledgebase/DEV/ (Dev build) || /cs476/knowledgebase/PROD/ (Prod build) || . (Local development)",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,8 +18,10 @@
     "mui": "^0.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-native": "^0.74.0",
+    "react-native-web": "^0.19.11",
     "react-router-dom": "^6.22.3",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
