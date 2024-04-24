@@ -8,6 +8,7 @@ const Directory = ({ location }) => {
                     <tbody>
                         <tr><td><a href="#/"><p>Home</p></a></td></tr>
                         <tr><td><a href="#about"><p>About</p></a></td></tr>
+                        <tr><td><a href="#Sample Article"><p>Article</p></a></td></tr>
                     </tbody>
                 </table>
             </div>
