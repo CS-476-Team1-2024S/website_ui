@@ -9,6 +9,7 @@ const Directory = ({ location }) => {
                         <tr><td><a href="#/"><p>Home</p></a></td></tr>
                         <tr><td><a href="#about"><p>About</p></a></td></tr>
                         <tr><td><a href="#Article"><p>Sample Article</p></a></td></tr>
+                        <tr><td><a href="#Template"><p>Markdown Test</p></a></td></tr>
                     </tbody>
                 </table>
             </div>

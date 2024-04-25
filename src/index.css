@@ -114,6 +114,9 @@ code {
 .hometitle{
   text-align: center;
 }
+.articletitle{
+  text-align: center;
+}
 
 .searchbox{
   text-align: center;
@@ -134,14 +137,14 @@ code {
 
 /* Style for articles */
 
-.article-content{
+.article-content div{
     padding: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 100vh;
+    height: 70vh;
 }
 
 /* CSS for darkmode button after this point */
