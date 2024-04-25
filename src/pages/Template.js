@@ -1,6 +1,10 @@
 import React from 'react'
 import {createRoot} from 'react-dom/client'
 import Markdown from 'react-markdown'
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import SearchBox from '../components/SearchBox';
+
 
 const markdown = `
 # Beginner's Guide to Fishing
@@ -47,7 +51,10 @@ Fishing is a timeless pastime that offers a unique blend of relaxation and excit
 
 const Template = () => {
     return (
-    createRoot(document.body).render(<Markdown>{markdown}</Markdown>)
+        <div>
+            /**/
+        </div>
     );
 };
 
+export default Template;
