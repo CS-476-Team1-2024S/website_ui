@@ -37,6 +37,8 @@ code {
   width: 89vw;
 }
 
+
+
 #root .content {
   position: relative;
   top: 40px;
@@ -121,6 +123,18 @@ code {
 
 .content div {
   border: 1px solid crimson;
+}
+
+
+/* Style for articles */
+
+.article-content div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
 }
 
 /* CSS for darkmode button after this point */
