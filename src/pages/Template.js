@@ -26,7 +26,7 @@ Fishing is a rewarding outdoor activity that allows you to connect with nature w
 - **Setting the Hook:** When you feel a bite, swiftly but firmly jerk the rod to set the hook in the fish's mouth.
 - **Reeling:** Use a steady, smooth motion to reel in your catch. Keep tension on the line to prevent the fish from escaping.
 
-## Finding the Right Spot
+## Finding the Right Spotm
 
 - **Research:** Look for local fishing spots such as lakes, rivers, ponds, or piers. Research online or ask local anglers for recommendations.
 - **Observe:** Pay attention to factors like water depth, temperature, current, and vegetation. Fish are more likely to be found near underwater structures or in areas with abundant food sources.
@@ -36,6 +36,9 @@ Fishing is a rewarding outdoor activity that allows you to connect with nature w
 
 - **Natural Bait:** Live bait such as worms, minnows, or insects can be highly effective for catching a wide range of fish species.
 - **Artificial Lures:** Experiment with artificial lures like spinners, jigs, or crankbaits. Choose lures that mimic the appearance and movement of the fish's natural prey.
+
+![Alt text](https://www.lurenet.com/media/catalog/product/cache/102f0aa50d5b532c7830600d73cb389b/c/7/c77_22_1.jpg)
+
 
 ## Safety Tips
 
