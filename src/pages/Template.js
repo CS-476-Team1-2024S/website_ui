@@ -1,17 +1,33 @@
-import React from 'react'
-import {createRoot} from 'react-dom/client'
-import Markdown from 'react-markdown'
+import React, { useEffect, useState } from 'react';
+import { createRoot } from 'react-dom/client';
+import Markdown from 'react-markdown';
 
-/* Local Template for Displaying Markdown Files*/
-const fs = require('fs')
-const markdownpath = 'src/markdown/Fishing.txt'
-
-
-const markdown = fs.readFileSync(markdownpath, 'utf8');
+const markdownPath = 'src/markdown/Fishing.txt';
 
 const Template = () => {
-    return (
-    createRoot(document.body).render(<Markdown>{markdown}</Markdown>)
-    );
+  const [markdown, setMarkdown] = useState('');
+
+  useEffect(() => {
+    fetch(markdownPath)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch markdown file');
+        }
+        return response.text();
+      })
+      .then(markdownContent => {
+        setMarkdown(markdownContent);
+      })
+      .catch(error => {
+        console.error('Error fetching markdown file:', error);
+      });
+  }, []);
+
+  return (
+    <div>
+      <Markdown>{markdown}</Markdown>
+    </div>
+  );
 };
 
+createRoot(document.body).render(<Template />);
