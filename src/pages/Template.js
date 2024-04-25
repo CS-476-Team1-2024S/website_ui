@@ -51,8 +51,9 @@ Fishing is a timeless pastime that offers a unique blend of relaxation and excit
 
 const Template = () => {
     return (
-        <div>
-            /**/
+
+        <div className = "content">
+           <Markdown>{markdown}</Markdown>
         </div>
     );
 };
