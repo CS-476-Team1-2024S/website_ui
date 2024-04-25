@@ -129,12 +129,12 @@ code {
 /* Style for articles */
 
 .article-content div{
+    padding: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-top: 500px;
     height: 100vh;
 }
 
