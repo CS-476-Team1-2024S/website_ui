@@ -6,7 +6,6 @@ const Article = () => {
             <h1>How to Play Go Fish</h1>
             <h2>Part 1 | Starting the Game</h2>
             <img src="/images/aid155200-v4-728px-Play-Go-Fish-Step-1-Version-3.jpg.webp" alt="Play Go Fish Step 1" />
-            <ImageWebp>
             <ol>
                 <li>
                     <p>
