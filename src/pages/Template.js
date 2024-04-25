@@ -31,3 +31,5 @@ const Template = () => {
 };
 
 createRoot(document.body).render(<Template />);
+
+export default Template;
