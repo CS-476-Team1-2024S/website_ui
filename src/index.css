@@ -44,6 +44,12 @@ code {
   top: 40px;
 }
 
+#root .article-content {
+  position: relative;
+  top: 40px;
+}
+
+
 #title {
   position: relative;
   left: 10vw;
@@ -128,7 +134,7 @@ code {
 
 /* Style for articles */
 
-.article-content div{
+.article-content{
     padding: 50px;
     display: flex;
     flex-direction: column;
