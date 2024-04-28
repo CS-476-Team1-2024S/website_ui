@@ -2,10 +2,23 @@ import React from 'react';
 
 const Login = async (username, password) => {
 
-    const response = await fetch(`https://147.219.135.122:7078/User/Login/${username}/${password}`) 
+    var bodyInfo = JSON.stringify({
+        'userInfo':
+        {
+            'username': username,
+            'password': password
+        }
+    });
 
-    const data = await response.text();
-    
-    return data;
+    return fetch(`https://localhost:5001/User/Login`, {
+        method: "SET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: bodyInfo,
+    })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
 };
 export default Login;
