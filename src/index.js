@@ -14,7 +14,7 @@ root.render(
 );
 
 const directory = ReactDOM.createRoot(document.getElementById('nav'));
-directory.render(
+await directory.render(
   <Directory></Directory>
 );
 
