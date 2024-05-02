@@ -21,11 +21,15 @@ const Page = () => {
     }, [pageName]); // Determines when the effect will run. If empty, it will only run once after the initial render
 
     if (!pageContent) {
-        return <div>Loading...</div>;
+        return (
+            <div className="content">
+                <h1>Loading...</h1>
+            </div>
+        );
     }
 
     return (
-        <div className = "content">
+        <div className="content">
             <h1>{pageName}</h1>
             <Markdown>{pageContent}</Markdown>
         </div>

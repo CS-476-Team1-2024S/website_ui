@@ -19,7 +19,13 @@ const Directory = () => {
     }, []); // Determines when the effect will run. If empty, it will only run once after the initial render
 
     if (!pages) {
-        return <div>Loading...</div>;
+        return (
+            <div className="sideBar">
+                <table>
+                    <tbody><div id="directory"><p>Loading...</p></div></tbody>
+                </table>
+            </div>
+        );
     }
     else {
         pageList = String(pages).split("    ¬").filter(line => line.includes('.md'));
