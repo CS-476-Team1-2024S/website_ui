@@ -21,7 +21,7 @@ const Directory = () => {
     if (!pages) {
         return <div>Loading...</div>;
     }
-    else{
+    else {
         pageList = String(pages).split("    ¬").filter(line => line.includes('.md'));
         console.log(pageList);
         return (
@@ -31,13 +31,13 @@ const Directory = () => {
                     <table>
                         <tbody>
                             <tr><td><a href="#/"><p>Home</p></a></td></tr>
-                            <tr><td><a href="#about"><p>About</p></a></td></tr>
                             {pageList.map((page) => {
                                 var formattedName = page.split(".")[0];
                                 return (
-                                    <tr key={formattedName}><td><a href={"#" + formattedName}><p>{formattedName}</p></a></td></tr>
+                                    <tr key={formattedName}><td><a href={"#page/" + formattedName}><p>{formattedName}</p></a></td></tr>
                                 );
                             })}
+                            <tr><td><a href="#about"><p>About</p></a></td></tr>
                         </tbody>
                     </table>
                 </div>

@@ -1,16 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Login = async (username, password) => {
-
+const GetPageContent = async (path) => {
     var bodyInfo = JSON.stringify({
-        'userInfo':
+        'fileInfo':
         {
-            'username': username,
-            'password': password
+            'path': path
         }
     });
 
-    return fetch(`https://localhost:5001/User/Login`, {
+    return await fetch(`https://140.146.23.39:5001/File/Read`, {
         method: "SET",
         headers: {
             "Content-Type": "application/json",
@@ -18,7 +16,6 @@ const Login = async (username, password) => {
         body: bodyInfo
     })
         .then(response => response.json())
-        .then(data => console.log(data))
         .catch(error => console.error(error));
 };
-export default Login;
+export default GetPageContent;
