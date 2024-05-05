@@ -1,34 +1,53 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import GetSearchResults from '../hooks/GetSearchResults'; // Import the hook to fetch search results
 import '../index.css'; // Import CSS file for styling
 
 const ResultsPage = () => {
-    const location = useLocation();
-    const searchResultsString = location.state ? location.state.searchResults : '';
-    const searchResults = searchResultsString ? searchResultsString.split(',') : [];
+    var filteredResults;
+    const { query } = useParams(); // Get the query parameter from the URL
+    const [results, setResults] = useState(null);
 
-    // Function to extract the name from the file path
-    const getNameFromPath = (path) => {
-        const parts = path.split('/');
-        return parts[parts.length - 1].replace('.md', ''); // Remove '.md' extension
-    };
+    useEffect(() => {
+        const search = async () => {
+            try {
+                const data = await GetSearchResults(query);
+                setResults(data);
+            } catch (error) {
+                console.error('Failed to fetch results:', error);
+            }
+        };
 
-    // Render search results
-    return (
-        <div className="results-container">
-            <h2 className="results-heading">Search Results</h2>
-            <ul className="results-list">
-                {searchResults.map((result, index) => (
-                    <li key={index} className="result-item">
-                        {/* Create a clickable link with the name as text */}
-                        <Link to={`/page/${getNameFromPath(result)}`} className="result-link">
-                            {getNameFromPath(result)}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+        search();
+    }, [query]); // Determines when the effect will run. If empty, it will only run once after the initial render
+
+    if (!results) {
+        return (
+            <div className="results-container">
+                <h2 className="results-heading">Search Results</h2>
+                <p>Nothing found, please try refining your search</p>
+            </div>
+        );
+    }
+    else {
+        filteredResults = String(results).split("/").filter(line => line.includes('.md'));
+        return (
+            <div className="results-container">
+                <h2 className="results-heading">Search Results</h2>
+                <ul className="results-list">
+                    {filteredResults.map((links) => {
+                        var formattedName = links.split(",")[0].split(".md")[0];
+                        console.log(formattedName);
+                        return (
+                            <li key={formattedName} className="result-item">
+                                <a href={`#page/${formattedName}`}><p>{formattedName}</p></a>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
+        );
+    }
 };
 
 export default ResultsPage;

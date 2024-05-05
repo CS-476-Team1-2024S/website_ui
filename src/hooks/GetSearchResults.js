@@ -1,14 +1,12 @@
-const Login = async (username, password) => {
-
+const GetSearchResults = async (query) => {
     var bodyInfo = JSON.stringify({
-        'userInfo':
+        'searchInfo':
         {
-            'username': username,
-            'password': password
+            'query': query
         }
     });
 
-    return fetch(`https://localhost:5001/User/Login`, {
+    return await fetch(`https://140.146.23.39:5001/Search/Query`, {
         method: "SET",
         headers: {
             "Content-Type": "application/json",
@@ -16,7 +14,6 @@ const Login = async (username, password) => {
         body: bodyInfo
     })
         .then(response => response.json())
-        .then(data => console.log(data))
         .catch(error => console.error(error));
 };
-export default Login;
+export default GetSearchResults;

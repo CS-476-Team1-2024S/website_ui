@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-
 const GetPageContent = async (path) => {
     var bodyInfo = JSON.stringify({
         'fileInfo':

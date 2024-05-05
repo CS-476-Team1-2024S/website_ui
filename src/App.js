@@ -14,12 +14,12 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/about" element={<About/>}/>
-          <Route path="/login" element={<LoginPage/>}/>
-          <Route path="/page/:pageName" element={<Page/>} />
+          <Route path="about" element={<About/>}/>
+          <Route path="login" element={<LoginPage/>}/>
+          <Route path="page/:pageName" element={<Page/>} />
 
           {/* Route for displaying search results */}
-          <Route path="/results" element={<ResultsPage />} />
+          <Route path="results/:query" element={<ResultsPage />} />
         </Routes>
       </Router>
     </>
