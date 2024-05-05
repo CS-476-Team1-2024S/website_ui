@@ -1,32 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import SearchBox from '../components/SearchBox';
+
 const Home = () => {
+    const navigate = useNavigate(); // Initialize useNavigate hook
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const handleSearch = () => {
+        if (searchTerm.trim() !== '') {
+            navigate(`/results/${searchTerm}`); // Navigate to ResultsPage with the search term as URL parameter
+        }
+    };
+
+    const handleInputChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
     return (
         <div className="homepage">
             <div className="hometitle">
                 <h1>Welcome to the _______ Wiki</h1>
                 <h3>Search for anything</h3>
             </div>
-            <SearchBox />
+            <SearchBox
+                value={searchTerm}
+                onChange={handleInputChange}
+                onSearch={handleSearch}
+            />
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2}>
-                    <Grid item xs={6}>
-                        <div className="leftSectionHome">
-                            <h2>How do I use the _______ Wiki?</h2>
-                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                        </div>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <div className="rightSectionHome">
-                            <h2>What is _______?</h2>
-                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                        </div>
-                    </Grid>
+                    {/* Content sections */}
                 </Grid>
             </Box>
         </div>
     );
 };
+
 export default Home;

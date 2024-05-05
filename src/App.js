@@ -5,6 +5,7 @@ import About from './pages/About';
 import ThemeButton from './components/ThemeButton';
 import LoginPage from './pages/LoginPage';
 import Page from './pages/Page';
+import ResultsPage from './pages/ResultsPage'; // Import ResultsPage component
 
 function App() {
   return (
@@ -13,12 +14,16 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="about" element={<About/>}/>
-          <Route path="login" element={<LoginPage/>}/>
-          <Route path="page/:pageName" element={<Page/>} />
+          <Route path="/about" element={<About/>}/>
+          <Route path="/login" element={<LoginPage/>}/>
+          <Route path="/page/:pageName" element={<Page/>} />
+
+          {/* Route for displaying search results */}
+          <Route path="/results" element={<ResultsPage />} />
         </Routes>
       </Router>
     </>
   );
 }
+
 export default App;
