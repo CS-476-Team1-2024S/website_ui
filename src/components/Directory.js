@@ -16,7 +16,7 @@ const Directory = () => {
         };
 
         fetchPages();
-    }, []); // Determines when the effect will run. If empty, it will only run once after the initial render
+    }, [pages]); // Determines when the effect will run. If empty, it will only run once after the initial render
 
     if (!pages) {
         return (

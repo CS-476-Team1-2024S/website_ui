@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Button, View, SafeAreaView, Text, Alert, TextInput } from 'react-native';
+import { StyleSheet, Button, View, SafeAreaView, Text, TextInput } from 'react-native';
 
 // Assuming Login is a custom hook or function for handling login
 import Login from '../hooks/Login';

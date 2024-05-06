@@ -39,7 +39,8 @@ code {
 
 #root .content {
   position: relative;
-  top: 40px;
+  padding-top: 20px;
+  margin-top: 21px;
 }
 
 #title {
@@ -118,10 +119,6 @@ code {
 
 .rightSectionHome h2{
   text-align: center;
-}
-
-.content div {
-  border: 1px solid crimson;
 }
 
 /* CSS for darkmode button after this point */
