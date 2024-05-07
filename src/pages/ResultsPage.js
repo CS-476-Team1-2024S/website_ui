@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import GetSearchResults from '../hooks/GetSearchResults'; // Import the hook to fetch search results
 import SearchBox from '../components/SearchBox'; // Import the search box component
-import '../index.css'; // Import CSS file for styling
 
 const ResultsPage = () => {
     const { query } = useParams(); // Get the query parameter from the URL
@@ -25,7 +24,7 @@ const ResultsPage = () => {
         };
 
         search();
-    }, [query]); // Determines when the effect will run. If empty, it will only run once after the initial render
+    }, [query, results]); // Determines when the effect will run. If empty, it will only run once after the initial render
 
     return (
         <div className="results-container">
