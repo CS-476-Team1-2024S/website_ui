@@ -3,24 +3,24 @@ import React, { useState } from 'react';
 const SearchBox = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
-    const handleInputChange = (event) => {
-        setSearchTerm(event.target.value);
-    };
-
-    const handleSearch = () => {
-        // Perform search logic here
-        console.log('Searching for:', searchTerm);
-    };
+    const handleOnSubmit = () => {
+        window.location.href = '#results/' + searchTerm;
+      }
 
     return (
         <div className="searchbox">
-            <input
-                type="text"
-                placeholder="Search for..."
-                value={searchTerm}
-                onChange={handleInputChange}
-            />
-            <button onClick={handleSearch}>Search</button>
+            <form onSubmit={handleOnSubmit} className="input">
+                <input
+                    type="text"
+                    placeholder="Search for..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <button
+                    onClick={handleOnSubmit}>
+                    Search
+                </button>
+            </form>
         </div>
     );
 };

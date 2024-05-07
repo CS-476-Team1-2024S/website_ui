@@ -109,6 +109,7 @@ code {
 
 .searchbox{
   text-align: center;
+  padding: 2px;
 }
 
 .leftSectionHome h2{
@@ -172,4 +173,34 @@ code {
 
 .fa-sun {
   color: #f39c12;
+}
+
+
+/* Results Page Formatting */
+.results-container {
+    text-align: center;
+}
+
+.results-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.results-list {
+    list-style: none;
+    padding: 0;
+}
+
+.result-item {
+    margin-bottom: 10px;
+}
+
+.result-link {
+    font-size: 18px;
+    text-decoration: none;
+    color: #333;
+}
+
+.result-link:hover {
+    color: #007bff; /* Change color on hover */
 }
