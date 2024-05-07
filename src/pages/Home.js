@@ -2,7 +2,9 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import SearchBox from '../components/SearchBox';
+
 const Home = () => {
+    console.log();
     return (
         <div className="homepage">
             <div className="hometitle">
@@ -10,8 +12,8 @@ const Home = () => {
                 <h3>Search for anything</h3>
             </div>
             <SearchBox />
-            <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={2}>
+            <Box sx={{ flexGrow: 1, padding: 0}}>
+                <Grid container spacing={2} margin={[0,0]}>
                     <Grid item xs={6}>
                         <div className="leftSectionHome">
                             <h2>How do I use the _______ Wiki?</h2>
