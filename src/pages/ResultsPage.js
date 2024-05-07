@@ -5,7 +5,6 @@ import SearchBox from '../components/SearchBox'; // Import the search box compon
 import '../index.css'; // Import CSS file for styling
 
 const ResultsPage = () => {
-    var filteredResults;
     const { query } = useParams(); // Get the query parameter from the URL
     const [results, setResults] = useState(null);
 
@@ -13,7 +12,9 @@ const ResultsPage = () => {
         const search = async () => {
             try {
                 const data = await GetSearchResults(query);
-                setResults(data);
+                if (data.Success) {
+                    setResults(data.Data.FilePaths);
+                }
             } catch (error) {
                 console.error('Failed to fetch results:', error);
             }
@@ -22,7 +23,7 @@ const ResultsPage = () => {
         search();
     }, [query]); // Determines when the effect will run. If empty, it will only run once after the initial render
 
-    if (!results) {
+    if (results?.length === 0) {
         return (
             <div className="results-container">
                 <SearchBox />
@@ -32,18 +33,17 @@ const ResultsPage = () => {
         );
     }
     else {
-        filteredResults = String(results).split("/").filter(line => line.includes('.md'));
         return (
             <div className="results-container">
                 <SearchBox />
                 <h2 className="results-heading">Search Results</h2>
                 <ul className="results-list">
-                    {filteredResults.map((links) => {
-                        var formattedName = links.split(",")[0].split(".md")[0];
-                        console.log(formattedName);
+                    {results?.map((links, index) => {
+                        var directory = links.split("/")[1];
+                        var fileName = links.split("/")[2].split(".md")[0];
                         return (
-                            <li key={formattedName} className="result-item">
-                                <a href={`#page/${formattedName}`}><p>{formattedName}</p></a>
+                            <li key={index} className="result-item">
+                                <a href={`#page/${directory}-${fileName}`}><p>{fileName}</p></a>
                             </li>
                         );
                     })}

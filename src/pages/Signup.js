@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
 import { StyleSheet, Button, View, SafeAreaView, Text, TextInput } from 'react-native';
+import AddUser from '../hooks/AddUser';
 
-// Assuming Login is a custom hook or function for handling login
-import Login from '../hooks/Login';
-
-const LoginPage = () => {
+const Signup = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [data, setData] = useState(null);
 
-    const handleLogin = async () => {
-        // Call the Login function with username and password
-        setData(await Login(username, password));
+    const handleSignup = async () => {
+        try {
+            const data = await AddUser(username, password);
+            if (data.Success) {
+                alert("Successfully signed up!");
+                window.location.href = '#/user';
+                window.location.reload();
+            }
+        } catch (error) {
+            console.error('Failed to sign up:', error);
+        }
     };
-
     return (
         <div className="content">
-            <h1>Login</h1>
+            <h1>Sign Up</h1>
             <SafeAreaView style={styles.container}>
                 <View>
                     <Text>Username:</Text>
@@ -38,14 +42,13 @@ const LoginPage = () => {
                     />
                 </View>
                 <Button
-                    title="Login"
-                    onPress={handleLogin}
+                    title="Sign Up"
+                    onPress={handleSignup}
                 />
             </SafeAreaView>
         </div>
     );
 };
-
 // Stylesheet for the views and text inputs
 const styles = StyleSheet.create({
     container: {
@@ -61,4 +64,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default LoginPage;
+export default Signup;

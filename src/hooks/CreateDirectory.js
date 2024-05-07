@@ -1,8 +1,9 @@
-const WriteToFile = async (path) => {
+const CreateDirectory = async (path, token) => {
     var bodyInfo = JSON.stringify({
         "directoryInfo":
         {
-            "path": path,
+            "path": `root/${path}`,
+            "token": token
         }
     });
 
@@ -16,4 +17,4 @@ const WriteToFile = async (path) => {
         .then(response => response.json())
         .catch(error => console.error(error));
 };
-export default WriteToFile;
+export default CreateDirectory;

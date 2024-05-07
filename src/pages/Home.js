@@ -2,15 +2,16 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import SearchBox from '../components/SearchBox';
+import LoggedInAs from '../components/LoggedInAs';
 
 const Home = () => {
-    console.log();
     return (
         <div className="homepage">
             <div className="hometitle">
                 <h1>Welcome to the _______ Wiki</h1>
                 <h3>Search for anything</h3>
             </div>
+            <LoggedInAs />
             <SearchBox />
             <Box sx={{ flexGrow: 1, padding: 0}}>
                 <Grid container spacing={2} margin={[0,0]}>

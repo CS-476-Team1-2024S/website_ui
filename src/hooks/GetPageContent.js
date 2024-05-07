@@ -2,7 +2,7 @@ const GetPageContent = async (path) => {
     var bodyInfo = JSON.stringify({
         'fileInfo':
         {
-            'path': path
+            'path': `root/${path}`
         }
     });
 
