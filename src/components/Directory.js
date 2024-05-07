@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import GetPages from '../hooks/GetPages';
+import CreateDirectoryButton from './CreateDirectoryButton';
 
 const Directory = () => {
     var pageList;
@@ -28,11 +29,13 @@ const Directory = () => {
         );
     }
     else {
-        pageList = String(pages).split("    ¬").filter(line => line.includes('.md'));
-        console.log(pageList);
+        pageList = String(pages).split("¬").filter(line => !line.includes('.md'));
+        pageList.shift();
+        pageList.shift();
         return (
             <div className="sideBar">
                 <img className="logo" src="images/logo.png" alt="Knowledgebase Site Logo"></img>
+                <CreateDirectoryButton/>
                 <div id="directory">
                     <table>
                         <tbody>
@@ -40,7 +43,7 @@ const Directory = () => {
                             {pageList.map((page) => {
                                 var formattedName = page.split(".")[0];
                                 return (
-                                    <tr key={formattedName}><td><a href={"#page/" + formattedName}><p>{formattedName}</p></a></td></tr>
+                                    <tr key={formattedName}><td><a href={"#category/" + formattedName}><p>{formattedName}</p></a></td></tr>
                                 );
                             })}
                             <tr><td><a href="#about"><p>About</p></a></td></tr>

@@ -6,6 +6,7 @@ import ThemeButton from './components/ThemeButton';
 import LoginPage from './pages/LoginPage';
 import Page from './pages/Page';
 import ResultsPage from './pages/ResultsPage'; // Import ResultsPage component
+import DirectoryPage from './pages/DirectoryPage'; // Import DirectoryPage component
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="about" element={<About/>}/>
           <Route path="login" element={<LoginPage/>}/>
-          <Route path="page/:pageName" element={<Page/>} />
+          <Route path="page/:path" element={<Page/>} />
+          <Route path="category/:directory" element={<DirectoryPage />} />
 
           {/* Route for displaying search results */}
           <Route path="results/:query" element={<ResultsPage />} />

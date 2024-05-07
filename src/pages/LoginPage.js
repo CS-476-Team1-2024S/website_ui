@@ -7,11 +7,11 @@ import Login from '../hooks/Login';
 const LoginPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [data, setData] = useState(null);
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         // Call the Login function with username and password
-        console.log('User: ' + username, ' Pass: ' + password);
-        console.log(Login(username, password));
+        setData(await Login(username, password));
     };
 
     return (

@@ -6,26 +6,28 @@ import GetPageContent from '../hooks/GetPageContent';
 import WriteToFile from '../hooks/WriteToFile';
 
 const Page = () => {
-    const { pageName } = useParams();
+    const { path } = useParams();
     const [editMode, setEditMode] = useState(false);
     const [pageContent, setPageContent] = useState(null);
+    const pageName = String(path).split("-")[1];
+    const directory = String(path).split("-")[0];
 
     useEffect(() => {
         const fetchContent = async () => {
             try {
-                const data = await GetPageContent(pageName + ".md");
+                const data = await GetPageContent(directory + "/" + pageName + ".md");
                 setPageContent(data);
             } catch (error) {
                 console.error('Failed to fetch pages:', error);
             }
         };
         setEditMode(false);
-        fetchContent();
+        fetchContent();      
     }, [pageName]); // Determines when the effect will run. If empty, it will only run once after the initial render
 
     const writeToFile = async (path, content) => {
         try {
-            await WriteToFile(path + ".md", content);
+            await WriteToFile(directory + "/" + pageName + ".md", content);
             alert('Successfully saved!');
         } catch (error) {
             alert('Failed to write to page: ', error);
@@ -39,7 +41,7 @@ const Page = () => {
     const handleSaveClick = (newMarkdown) => {
         setPageContent(newMarkdown);
         setEditMode(false);
-        writeToFile(pageName, pageContent);
+        writeToFile(pageName, newMarkdown);
     };
 
     if (!pageContent) {

@@ -63,7 +63,7 @@ code {
 
 #directory {
   position: absolute;
-  top: 180px;
+  top: 200px;
   left: 10px;
   width: 150px;
   height: 70vh;
@@ -102,6 +102,12 @@ code {
   height: 150px;
   top: 10px;
   left: 10px;
+}
+
+.createDirectoryButton{
+  position: relative;
+  top: 170px;
+  left: 35px;
 }
 
 .hometitle{
