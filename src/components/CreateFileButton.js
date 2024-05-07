@@ -1,4 +1,5 @@
 import CreateFile from '../hooks/CreateFile';
+import CheckUser from '../hooks/CheckUser';
 
 const CreateFileButton = ({directory}) => {
 
@@ -19,7 +20,7 @@ const CreateFileButton = ({directory}) => {
         }
     };
 
-    if(localStorage.getItem('userName') !== null && localStorage.getItem('userToken') !== null){
+    if(CheckUser()){
         return <button onClick={createPage}>New Page</button>;
     }
     else{

@@ -14,29 +14,26 @@ const ResultsPage = () => {
                 const data = await GetSearchResults(query);
                 if (data.Success) {
                     setResults(data.Data.FilePaths);
+                    console.log(results);
+                }
+                else {
+                    alert(`Failed to search: ${data.Content}`);
                 }
             } catch (error) {
-                console.error('Failed to fetch results:', error);
+                alert('Failed calling API: ', error);
             }
         };
 
         search();
     }, [query]); // Determines when the effect will run. If empty, it will only run once after the initial render
 
-    if (results?.length === 0) {
-        return (
-            <div className="results-container">
-                <SearchBox />
-                <h2 className="results-heading">Search Results</h2>
-                <p>Nothing found, please try refining your search</p>
-            </div>
-        );
-    }
-    else {
-        return (
-            <div className="results-container">
-                <SearchBox />
-                <h2 className="results-heading">Search Results</h2>
+    return (
+        <div className="results-container">
+            <SearchBox />
+            <h2 className="results-heading">Search Results</h2>
+            {(!results || results === null) ? <p>Loading...</p> :
+                (results?.length === 0) ? 
+                <p>Nothing found, please try refining your search.</p> :
                 <ul className="results-list">
                     {results?.map((links, index) => {
                         var directory = links.split("/")[1];
@@ -48,9 +45,8 @@ const ResultsPage = () => {
                         );
                     })}
                 </ul>
-            </div>
-        );
-    }
-};
-
+            }
+        </div>
+    );
+}
 export default ResultsPage;

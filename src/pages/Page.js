@@ -6,6 +6,7 @@ import GetPageContent from '../hooks/GetPageContent';
 import WriteToFile from '../hooks/WriteToFile';
 import LoggedInAs from '../components/LoggedInAs';
 import DeleteFileButton from '../components/DeleteFileButton';
+import CheckUser from '../hooks/CheckUser';
 
 const Page = () => {
     const { path } = useParams();
@@ -18,12 +19,17 @@ const Page = () => {
         const fetchContent = async () => {
             try {
                 const data = await GetPageContent(`${directory}/${pageName}.md`);
-                setPageContent(data.Data.FileContent);
-                //setSuccess(data.Success); //Once fixed, add this back in
+                if(data.Success){
+                    setPageContent(data.Data.FileContent);
+                }
+                else{
+                    alert(`Failed to get page content: ${data.Content}`);
+                }
             } catch (error) {
-                console.error('Failed to fetch pages:', error);
+                alert('Failed calling API: ', error);
             }
         };
+        
         setEditMode(false);
         fetchContent();
     }, [directory, pageName]); // Determines when the effect will run. If empty, it will only run once after the initial render
@@ -31,19 +37,15 @@ const Page = () => {
     const writeToFile = async (content) => {
         try {
             const data = await WriteToFile(`${directory}/${pageName}.md`, content, false, localStorage.getItem('userToken'));
-            if (!data.Success) {
-                alert(`Failed to write to page: ${data.Content}`);
-            }
-            else {
+            if (data.Success) {
                 alert('Successfully saved!');
             }
+            else {
+                alert(`Failed to write to page: ${data.Content}`);
+            }
         } catch (error) {
-            alert('Failed to write to page: ', error);
+            alert('Failed calling API: ', error);
         }
-    };
-
-    const handleEditClick = () => {
-        setEditMode(true);
     };
 
     const handleSaveClick = (newMarkdown) => {
@@ -52,53 +54,29 @@ const Page = () => {
         writeToFile(newMarkdown);
     };
 
-    if (pageContent === "") {
-        return (
-            <div className="content">
-                <h1>{pageName}</h1>
-                <LoggedInAs />
-                {(!editMode && localStorage.getItem('userName') !== null && localStorage.getItem('userToken') !== null) ? (
-                    <button onClick={handleEditClick}>Edit</button>
-                ) : (localStorage.getItem('userName') !== null && localStorage.getItem('userToken') !== null) ? (
-                    <button onClick={() => handleSaveClick(pageContent)}>Save</button>
-                ) : (
-                    null
-                )}<DeleteFileButton directory={directory} pageName={pageName}/>
-                {editMode ? (
-                    <MDEditor value={pageContent} height="100%" visibleDragbar={false} onChange={setPageContent} />
-                ) : (
-                    <h1>No content</h1>
-                )}
-            </div>
-        );
-    }
-    else if (!pageContent) { //Change to !success once fixed
-        return (
+    return (
+        (pageContent === undefined) ?
             <div className="content">
                 <h1>Loading...</h1>
                 <LoggedInAs />
+            </div> :
+            <div className="content">
+                <h1>{pageName}</h1>
+                <LoggedInAs />
+                {(!editMode && CheckUser()) ? (
+                    <button onClick={setEditMode}>Edit</button>
+                ) : (CheckUser()) ? (
+                    <button onClick={() => handleSaveClick(pageContent)}>Save</button>
+                ) : (
+                    null
+                )}<DeleteFileButton directory={directory} pageName={pageName} />
+                {editMode ? (
+                    <MDEditor value={pageContent} height="100%" visibleDragbar={false} onChange={setPageContent} />
+                ) : (pageContent === "") ? (
+                    <h1>No content</h1>
+                ) : (<Markdown>{pageContent}</Markdown>)}
             </div>
-        );
-    }
-
-    return (
-        <div className="content">
-            <h1>{pageName}</h1>
-            <LoggedInAs />
-            {(!editMode && localStorage.getItem('userName') !== null && localStorage.getItem('userToken') !== null) ? (
-                <button onClick={handleEditClick}>Edit</button>
-            ) : (localStorage.getItem('userName') !== null && localStorage.getItem('userToken') !== null) ? (
-                <button onClick={() => handleSaveClick(pageContent)}>Save</button>
-            ) : (
-                null
-            )}<DeleteFileButton directory={directory} pageName={pageName}/>
-            {editMode ? (
-                <MDEditor value={pageContent} height="100%" visibleDragbar={false} onChange={setPageContent} />
-            ) : (
-                <Markdown>{pageContent}</Markdown>
-            )}
-        </div>
-    );
-}
+    )
+};
 
 export default Page;

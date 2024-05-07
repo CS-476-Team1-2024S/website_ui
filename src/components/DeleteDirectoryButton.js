@@ -1,4 +1,5 @@
 import DeleteDirectory from '../hooks/DeleteDirectory';
+import CheckUser from '../hooks/CheckUser';
 
 const DeleteDirectoryButton = ({directory}) => {
 
@@ -14,7 +15,7 @@ const DeleteDirectoryButton = ({directory}) => {
         }
     };
     
-    if (localStorage.getItem('userName') !== null && localStorage.getItem('userToken') !== null) {
+    if (CheckUser()) {
         return <button onClick={deleteDirectory}>Delete Category</button>;
     }
     else {

@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { StyleSheet, Button, View, SafeAreaView, Text, TextInput } from 'react-native';
 import Login from '../hooks/Login';
 import Logout from '../hooks/Logout';
+import CheckUser from '../hooks/CheckUser';
 
 const UserPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const handleLogout = async () => {
-        //await Logout(localStorage.getItem('userToken');
         try {
             const data = await Logout(localStorage.getItem('userToken'));
             if (data.Success) {
@@ -16,11 +16,11 @@ const UserPage = () => {
                 localStorage.removeItem('userToken');
                 window.location.reload();
             }
-            else{
-                alert("Token is invalid?");
+            else {
+                alert(`Failed to logout: ${data.Content}`);
             }
         } catch (error) {
-            console.error('Failed to fetch pages:', error);
+            alert('Failed calling API: ', error);
         }
     };
 
@@ -32,57 +32,49 @@ const UserPage = () => {
                 localStorage.setItem('userToken', data.Data.Token);
                 window.location.reload();
             }
-            else{
-                alert("Username or password is incorrect.");
+            else {
+                alert(`Failed to login: ${data.Content}`);
             }
         } catch (error) {
-            console.error('Failed to fetch pages:', error);
+            alert('Failed calling API: ', error);
         }
     };
 
-    //Change to logout function once fixed
-    if (localStorage.getItem('userName') !== null && localStorage.getItem('userToken') !== null) {
-        return (
-            <div className="content">
-                <h1>Logged in as {localStorage.getItem('userName')}</h1>
-                <button onClick={handleLogout}>Logout</button>
-            </div>
-        );
-    }
-    else {
-        return (
-            <div className="content">
-                <div className="userHolder"><a href='#signup'>Sign Up</a></div>
-                <h1>Login</h1>
-                <SafeAreaView style={styles.container}>
-                    <View>
-                        <Text>Username:</Text>
-                        <TextInput
-                            style={styles.input}
-                            value={username}
-                            onChangeText={setUsername} // This will update the state on text change
-                            autoCapitalize="none"
+    return (
+        <div className="content">
+            {(CheckUser()) ?
+                <><h1>Logged in as {localStorage.getItem('userName')}</h1>
+                    <button onClick={handleLogout}>Logout</button></> :
+                <><div className="userHolder"><a href='#signup'>Sign Up</a></div>
+                    <h1>Login</h1>
+                    <SafeAreaView style={styles.container}>
+                        <View>
+                            <Text>Username:</Text>
+                            <TextInput
+                                style={styles.input}
+                                value={username}
+                                onChangeText={setUsername} // This will update the state on text change
+                                autoCapitalize="none"
+                            />
+                        </View>
+                        <View>
+                            <Text>Password:</Text>
+                            <TextInput
+                                style={styles.input}
+                                value={password}
+                                onChangeText={setPassword} // This will update the state on text change
+                                secureTextEntry // Hides the password
+                                autoCapitalize="none"
+                            />
+                        </View>
+                        <Button
+                            title="Login"
+                            onPress={handleLogin}
                         />
-                    </View>
-                    <View>
-                        <Text>Password:</Text>
-                        <TextInput
-                            style={styles.input}
-                            value={password}
-                            onChangeText={setPassword} // This will update the state on text change
-                            secureTextEntry // Hides the password
-                            autoCapitalize="none"
-                        />
-                    </View>
-                    <Button
-                        title="Login"
-                        onPress={handleLogin}
-                    />
-                </SafeAreaView>
-            </div>
-        );
-    }
-};
+                    </SafeAreaView></>}
+        </div>
+    );
+}
 // Stylesheet for the views and text inputs
 const styles = StyleSheet.create({
     container: {

@@ -1,4 +1,5 @@
 import CreateDirectory from '../hooks/CreateDirectory';
+import CheckUser from '../hooks/CheckUser';
 
 const CreateDirectoryButton = () => {
 
@@ -19,7 +20,7 @@ const CreateDirectoryButton = () => {
         }
     };
 
-    if(localStorage.getItem('userName') !== null && localStorage.getItem('userToken') !== null){
+    if(CheckUser()){
         return <button className="createDirectoryButton" onClick={createDirectory}>New Category</button>;
     }
     else{

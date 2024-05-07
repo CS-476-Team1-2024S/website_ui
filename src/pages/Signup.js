@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Button, View, SafeAreaView, Text, TextInput } from 'react-native';
 import AddUser from '../hooks/AddUser';
+import CheckUser from '../hooks/CheckUser';
 
 const Signup = () => {
     const [username, setUsername] = useState("");
@@ -14,10 +15,18 @@ const Signup = () => {
                 window.location.href = '#/user';
                 window.location.reload();
             }
+            else {
+                alert(`Failed to signup: ${data.Content}`);
+            }
         } catch (error) {
-            console.error('Failed to sign up:', error);
+            alert('Failed calling API: ', error);
         }
     };
+
+    if(CheckUser()){
+        window.location.href = '#/user';
+    }
+
     return (
         <div className="content">
             <h1>Sign Up</h1>

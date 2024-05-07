@@ -1,4 +1,5 @@
 import DeleteFile from '../hooks/DeleteFile';
+import CheckUser from '../hooks/CheckUser';
 
 const DeleteFileButton = ({directory, pageName}) => {
 
@@ -13,7 +14,7 @@ const DeleteFileButton = ({directory, pageName}) => {
         }
     };
 
-    if (localStorage.getItem('userName') !== null && localStorage.getItem('userToken') !== null) {
+    if (CheckUser()) {
         return <button onClick={deletePage}>Delete Page</button>;
     }
     else {
