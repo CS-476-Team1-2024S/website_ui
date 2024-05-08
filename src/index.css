@@ -18,8 +18,14 @@ html[data-theme="dark"] {
   --button: rgb(0, 0, 0);
 }
 
-a{
+a {
   color: var(--link);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--link);
+  text-decoration: none;
 }
 
 body {
@@ -63,10 +69,6 @@ code {
   left: 10px;
   width: 8vw;
   height: 90vh;
-}
-
-[data-theme="dark"] a:visited {
-  color: var(--accent);
 }
 
 #directory {
