@@ -1,14 +1,13 @@
-const Login = async (username, password) => {
+const Logout = async (token) => {
 
     var bodyInfo = JSON.stringify({
         'userInfo':
         {
-            'username': username,
-            'password': password
+            'token': token
         }
     });
 
-    return fetch(`https://140.146.23.39:5001/User/Login`, {
+    return fetch(`https://140.146.23.39:5001/User/Logout`, {
         method: "SET",
         headers: {
             "Content-Type": "application/json",
@@ -18,4 +17,4 @@ const Login = async (username, password) => {
         .then(response => response.json())
         .catch(error => console.error(error));
 };
-export default Login;
+export default Logout;

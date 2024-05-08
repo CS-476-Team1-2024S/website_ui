@@ -1,39 +1,83 @@
 import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Markdown from 'react-markdown'
+import MDEditor from '@uiw/react-md-editor';
 import GetPageContent from '../hooks/GetPageContent';
+import WriteToFile from '../hooks/WriteToFile';
+import LoggedInAs from '../components/LoggedInAs';
+import DeleteFileButton from '../components/DeleteFileButton';
+import CheckUser from '../hooks/CheckUser';
+import remarkGfm from 'remark-gfm';
 
 const Page = () => {
-    const { pageName } = useParams();
+    const { path } = useParams();
+    const [editMode, setEditMode] = useState(false);
     const [pageContent, setPageContent] = useState(null);
+    const pageName = String(path).split("-")[1];
+    const directory = String(path).split("-")[0];
 
     useEffect(() => {
         const fetchContent = async () => {
             try {
-                const data = await GetPageContent(pageName + ".md");
-                setPageContent(data);
+                const data = await GetPageContent(`${directory}/${pageName}.md`);
+                if(data.Success){
+                    setPageContent(data.Data.FileContent);
+                }
+                else{
+                    alert(`Failed to get page content: ${data.Content}`);
+                }
             } catch (error) {
-                console.error('Failed to fetch pages:', error);
+                alert('Failed calling API: ', error);
             }
         };
-
+        
+        setEditMode(false);
         fetchContent();
-    }, [pageName]); // Determines when the effect will run. If empty, it will only run once after the initial render
+    }, [directory, pageName]); // Determines when the effect will run. If empty, it will only run once after the initial render
 
-    if (!pageContent) {
-        return (
-            <div className="content">
-                <h1>Loading...</h1>
-            </div>
-        );
-    }
+    const writeToFile = async (content) => {
+        try {
+            const data = await WriteToFile(`${directory}/${pageName}.md`, content, false, localStorage.getItem('userToken'));
+            if (data.Success) {
+                alert('Successfully saved!');
+            }
+            else {
+                alert(`Failed to write to page: ${data.Content}`);
+            }
+        } catch (error) {
+            alert('Failed calling API: ', error);
+        }
+    };
+
+    const handleSaveClick = (newMarkdown) => {
+        setPageContent(newMarkdown);
+        setEditMode(false);
+        writeToFile(newMarkdown);
+    };
 
     return (
-        <div className="content">
-            <h1>{pageName}</h1>
-            <Markdown>{pageContent}</Markdown>
-        </div>
-    );
-}
+        (pageContent === undefined) ?
+            <div className="content">
+                <h1>Loading...</h1>
+                <LoggedInAs />
+            </div> :
+            <div className="content">
+                <h1>{pageName}</h1>
+                <LoggedInAs />
+                {(!editMode && CheckUser()) ? (
+                    <button className="leftButton" onClick={setEditMode}>Edit</button>
+                ) : (CheckUser()) ? (
+                    <button className="leftButton" onClick={() => handleSaveClick(pageContent)}>Save</button>
+                ) : (
+                    null
+                )}<DeleteFileButton directory={directory} pageName={pageName} />
+                {editMode ? (
+                    <MDEditor value={pageContent} height="100%" visibleDragbar={false} onChange={setPageContent} />
+                ) : (pageContent === "") ? (
+                    <h1>No content</h1>
+                ) : (<Markdown remarkPlugins={[remarkGfm]}>{pageContent}</Markdown>)}
+            </div>
+    )
+};
 
 export default Page;

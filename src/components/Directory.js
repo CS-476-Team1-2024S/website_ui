@@ -1,54 +1,58 @@
 import React, { useState, useEffect } from 'react';
-import GetPages from '../hooks/GetPages';
+import Scan from '../hooks/Scan';
+import CreateDirectoryButton from './CreateDirectoryButton';
 
 const Directory = () => {
-    var pageList;
-    const [pages, setPages] = useState(null);
+    const [directory, setDirectory] = useState(null);
 
     useEffect(() => {
-        const fetchPages = async () => {
+        const fetchDirectories = async () => {
             try {
-                const data = await GetPages();
-                setPages(data);
+                const data = await Scan("root");
+                if (data.Success) {
+                    setDirectory(data.Data.Subdirectories.map(subdir => subdir.Name));
+                }
+                else {
+                    alert(`Failed to get directories: ${data.Content}`);
+                }
             } catch (error) {
-                console.error('Failed to fetch pages:', error);
+                alert('Failed calling API: ', error);
             }
         };
 
-        fetchPages();
+        fetchDirectories();
     }, []); // Determines when the effect will run. If empty, it will only run once after the initial render
 
-    if (!pages) {
-        return (
-            <div className="sideBar">
-                <table>
-                    <tbody><div id="directory"><p>Loading...</p></div></tbody>
-                </table>
-            </div>
-        );
-    }
-    else {
-        pageList = String(pages).split("    ¬").filter(line => line.includes('.md'));
-        console.log(pageList);
-        return (
-            <div className="sideBar">
-                <img className="logo" src="images/logo.png" alt="Knowledgebase Site Logo"></img>
-                <div id="directory">
-                    <table>
-                        <tbody>
-                            <tr><td><a href="#/"><p>Home</p></a></td></tr>
-                            {pageList.map((page) => {
-                                var formattedName = page.split(".")[0];
+    return (
+        <div className="sideBar">
+            <img className="logo" src="images/logo.png" alt="Knowledgebase Site Logo"></img>
+            <CreateDirectoryButton />
+            <div id="directory">
+                <table className="dirTable">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="#/">Home</a>
+                            </td>
+                        </tr>
+                        {(!directory) ?
+                            <tr>
+                                <td>Loading...</td>
+                            </tr> :
+                            directory.map((name, index) => {
                                 return (
-                                    <tr key={formattedName}><td><a href={"#page/" + formattedName}><p>{formattedName}</p></a></td></tr>
+                                    <tr key={index}><td><a href={"#category/" + name}>{name}</a></td></tr>
                                 );
                             })}
-                            <tr><td><a href="#about"><p>About</p></a></td></tr>
-                        </tbody>
-                    </table>
-                </div>
+                        <tr>
+                            <td>
+                                <a href="#about">About</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        );
-    }
-};
+        </div>
+    );
+}
 export default Directory;

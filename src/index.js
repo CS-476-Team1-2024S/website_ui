@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import Directory from './components/Directory';
 import reportWebVitals from './reportWebVitals';
-import Title from './components/Title';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,8 +16,6 @@ const directory = ReactDOM.createRoot(document.getElementById('nav'));
 await directory.render(
   <Directory></Directory>
 );
-
-let title = window.location.pathname.split("/").pop();
 
 /* For local testing */
 // if (title.includes("%20(Prod%20build)%20%7C%7C%20.%20(Local%20development)")) {
