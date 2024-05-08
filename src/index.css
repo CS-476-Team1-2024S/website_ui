@@ -18,8 +18,14 @@ html[data-theme="dark"] {
   --button: rgb(0, 0, 0);
 }
 
-a{
+a {
   color: var(--link);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--link);
+  text-decoration: none;
 }
 
 body {
@@ -63,10 +69,6 @@ code {
   left: 10px;
   width: 8vw;
   height: 90vh;
-}
-
-[data-theme="dark"] a:visited {
-  color: var(--accent);
 }
 
 #directory {
@@ -155,14 +157,6 @@ input{
   padding: 30px;
 }
 
-.leftSectionHome h2{
-  text-align: center;
-}
-
-.rightSectionHome h2{
-  text-align: center;
-}
-
 /* CSS for darkmode button after this point */
 
 .theme-button {
@@ -170,6 +164,24 @@ input{
   box-sizing: border-box;
   top: 50px;
   right: 50px;
+}
+
+.pageHeader{
+  position: absolute;
+  top: 120px;
+  left: 8px;
+}
+
+.markdownContent{
+  position: absolute;
+  top: 180px;
+  left: 10px;
+}
+
+.editor{
+  position: absolute;
+  top: 180px;
+  left: 10px;
 }
 
 .theme-toggle {
@@ -263,18 +275,6 @@ input{
 .content{
   position: absolute;
   padding: 100px;
-}
-
-.content h1{
-  text-align: center;
-}
-
-.content p{
-  text-align: center;
-}
-
-.content a{
-  text-align: center;
 }
 
 .dirTable{
