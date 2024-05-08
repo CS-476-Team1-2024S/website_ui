@@ -4,14 +4,28 @@ html[data-theme="light"] {
   --primary: rgb(43, 200, 227);
   --secondary: rgb(216, 131, 169);
   --accent: rgb(160, 160, 107);
+  --link: rgb(0, 0, 255);
+  --button: rgb(255, 255, 255);
 }
 
 html[data-theme="dark"] {
   --text: rgb(237, 252, 253);
   --background: rgb(34, 55, 68);
-  --primary: rgb(28, 184, 212);
+  --primary: rgb(255, 255, 255);
   --secondary: rgb(124, 39, 77);
   --accent: rgb(180, 152, 122);
+  --link: rgb(255, 123, 0);
+  --button: rgb(0, 0, 0);
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--link);
+  text-decoration: none;
 }
 
 body {
@@ -39,7 +53,8 @@ code {
 
 #root .content {
   position: relative;
-  top: 40px;
+  padding-top: 20px;
+  margin-top: 21px;
 }
 
 #title {
@@ -56,13 +71,9 @@ code {
   height: 90vh;
 }
 
-[data-theme="dark"] a:visited {
-  color: var(--accent);
-}
-
 #directory {
   position: absolute;
-  top: 180px;
+  top: 200px;
   left: 10px;
   width: 150px;
   height: 70vh;
@@ -78,6 +89,18 @@ code {
   width: 100%;
 }
 
+.leftButton{
+  position: absolute;
+  top:20px;
+  left:200px;
+}
+
+.rightButton{
+  position: absolute;
+  top:20px;
+  right:200px;
+}
+
 #directory tbody {
   width: 100%;
 }
@@ -91,37 +114,47 @@ code {
   text-decoration: none;
 }
 
-#directory p {
-  margin: 0;
-}
-
 .logo{
   position: absolute;
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   top: 10px;
-  left: 10px;
+  left: 16px;
+}
+
+.createDirectoryButton{
+  position: absolute;
+  top: 160px;
+  left: 22px;
+  width: 120px;
+}
+
+.userHolder{
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .hometitle{
   text-align: center;
 }
 
-.searchbox{
-  text-align: center;
-  padding: 2px;
+button{
+  background-color: var(--button);
+  color: var(--text);
+  margin: 5px;
+  padding: 4px;
+  font-size: 15px;
 }
 
-.leftSectionHome h2{
-  text-align: center;
+input{
+  width: 200px;
+  padding: 5px;
 }
 
-.rightSectionHome h2{
+.searchBox{
   text-align: center;
-}
-
-.content div {
-  border: 1px solid crimson;
+  padding: 30px;
 }
 
 /* CSS for darkmode button after this point */
@@ -129,7 +162,26 @@ code {
 .theme-button {
   position: absolute;
   box-sizing: border-box;
-  left: 0;
+  top: 50px;
+  right: 50px;
+}
+
+.pageHeader{
+  position: absolute;
+  top: 120px;
+  left: 8px;
+}
+
+.markdownContent{
+  position: absolute;
+  top: 180px;
+  left: 10px;
+}
+
+.editor{
+  position: absolute;
+  top: 180px;
+  left: 10px;
 }
 
 .theme-toggle {
@@ -203,4 +255,32 @@ code {
 
 .result-link:hover {
     color: #007bff; /* Change color on hover */
+}
+
+.homepage{
+  position: absolute;
+  margin: 10px;
+  padding-left: 10px;
+  padding-right: 20px;
+}
+
+.leftSectionHome{
+  text-align: left;
+}
+
+.rightSectionHome{
+  text-align: left;
+}
+
+.content{
+  position: absolute;
+  padding: 100px;
+}
+
+.dirTable{
+  text-align: center;
+}
+
+.userForm{
+  text-align: center;
 }

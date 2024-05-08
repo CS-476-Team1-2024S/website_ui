@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 const SearchBox = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
-    const handleOnSubmit = () => {
+    const handleSearch = () => {
         window.location.href = '#results/' + searchTerm;
       }
 
     return (
-        <div className="searchbox">
-            <form onSubmit={handleOnSubmit} className="input">
+        <div className="searchBox">
+            <form onSubmit={handleSearch} className="input">
                 <input
                     type="text"
                     placeholder="Search for..."
@@ -17,7 +17,7 @@ const SearchBox = () => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <button
-                    onClick={handleOnSubmit}>
+                    onClick={handleSearch}>
                     Search
                 </button>
             </form>

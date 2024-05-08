@@ -1,14 +1,13 @@
-const Login = async (username, password) => {
-
+const DeleteFile = async (path, token) => {
     var bodyInfo = JSON.stringify({
-        'userInfo':
+        "fileInfo":
         {
-            'username': username,
-            'password': password
+            "path": `root/${path}`,
+            "token": token
         }
     });
 
-    return fetch(`https://140.146.23.39:5001/User/Login`, {
+    return await fetch(`https://140.146.23.39:5001/File/Delete`, {
         method: "SET",
         headers: {
             "Content-Type": "application/json",
@@ -18,4 +17,4 @@ const Login = async (username, password) => {
         .then(response => response.json())
         .catch(error => console.error(error));
 };
-export default Login;
+export default DeleteFile;
