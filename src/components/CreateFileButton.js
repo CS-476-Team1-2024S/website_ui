@@ -21,7 +21,7 @@ const CreateFileButton = ({directory}) => {
     };
 
     if(CheckUser()){
-        return <button onClick={createPage}>New Page</button>;
+        return <button className="leftButton" onClick={createPage}>New Page</button>;
     }
     else{
         return null;

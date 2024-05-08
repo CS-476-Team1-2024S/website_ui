@@ -24,7 +24,7 @@ const ResultsPage = () => {
         };
 
         search();
-    }, [query, results]); // Determines when the effect will run. If empty, it will only run once after the initial render
+    }, [query]); // Determines when the effect will run. If empty, it will only run once after the initial render
 
     return (
         <div className="results-container">
@@ -39,7 +39,7 @@ const ResultsPage = () => {
                         var fileName = links.split("/")[2].split(".md")[0];
                         return (
                             <li key={index} className="result-item">
-                                <a href={`#page/${directory}-${fileName}`}><p>{fileName}</p></a>
+                                <a href={`#page/${directory}-${fileName}`}>{fileName}</a>
                             </li>
                         );
                     })}

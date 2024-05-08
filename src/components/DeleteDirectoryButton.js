@@ -16,7 +16,7 @@ const DeleteDirectoryButton = ({directory}) => {
     };
     
     if (CheckUser()) {
-        return <button onClick={deleteDirectory}>Delete Category</button>;
+        return <button className="rightButton" onClick={deleteDirectory}>Delete Category</button>;
     }
     else {
         return null;

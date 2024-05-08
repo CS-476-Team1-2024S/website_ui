@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { StyleSheet, Button, View, SafeAreaView, Text, TextInput } from 'react-native';
 import Login from '../hooks/Login';
 import Logout from '../hooks/Logout';
 import CheckUser from '../hooks/CheckUser';
@@ -43,51 +42,30 @@ const UserPage = () => {
     return (
         <div className="content">
             {(CheckUser()) ?
-                <><h1>Logged in as {localStorage.getItem('userName')}</h1>
-                    <button onClick={handleLogout}>Logout</button></> :
+                <><h1>Logged in as: {localStorage.getItem('userName')}</h1>
+                    <button className="userHolder" onClick={handleLogout}>Logout</button></> :
                 <><div className="userHolder"><a href='#signup'>Sign Up</a></div>
                     <h1>Login</h1>
-                    <SafeAreaView style={styles.container}>
-                        <View>
-                            <Text>Username:</Text>
-                            <TextInput
-                                style={styles.input}
-                                value={username}
-                                onChangeText={setUsername} // This will update the state on text change
-                                autoCapitalize="none"
-                            />
-                        </View>
-                        <View>
-                            <Text>Password:</Text>
-                            <TextInput
-                                style={styles.input}
-                                value={password}
-                                onChangeText={setPassword} // This will update the state on text change
-                                secureTextEntry // Hides the password
-                                autoCapitalize="none"
-                            />
-                        </View>
-                        <Button
-                            title="Login"
-                            onPress={handleLogin}
-                        />
-                    </SafeAreaView></>}
+                    <form className="userForm" onSubmit={handleLogin}>
+                        <input
+                            type="text"
+                            placeholder="Username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        /><br />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        /><br/>
+                        <button
+                            onClick={handleLogin}>
+                            Login
+                        </button>
+                    </form></>}
         </div>
     );
 }
-// Stylesheet for the views and text inputs
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        marginHorizontal: 16,
-    },
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-    },
-});
 
 export default UserPage;

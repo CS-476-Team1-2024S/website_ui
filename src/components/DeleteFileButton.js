@@ -15,7 +15,7 @@ const DeleteFileButton = ({directory, pageName}) => {
     };
 
     if (CheckUser()) {
-        return <button onClick={deletePage}>Delete Page</button>;
+        return <button className="rightButton" onClick={deletePage}>Delete Page</button>;
     }
     else {
         return null;

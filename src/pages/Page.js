@@ -64,9 +64,9 @@ const Page = () => {
                 <h1>{pageName}</h1>
                 <LoggedInAs />
                 {(!editMode && CheckUser()) ? (
-                    <button onClick={setEditMode}>Edit</button>
+                    <button className="leftButton" onClick={setEditMode}>Edit</button>
                 ) : (CheckUser()) ? (
-                    <button onClick={() => handleSaveClick(pageContent)}>Save</button>
+                    <button className="leftButton" onClick={() => handleSaveClick(pageContent)}>Save</button>
                 ) : (
                     null
                 )}<DeleteFileButton directory={directory} pageName={pageName} />

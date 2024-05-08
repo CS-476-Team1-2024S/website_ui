@@ -8,7 +8,6 @@ const About = () => {
             <h1>About</h1>
             <LoggedInAs />
             <p>This is the about page</p>
-            <a href="#/">Back to Home</a>
         </div>
     );
 };

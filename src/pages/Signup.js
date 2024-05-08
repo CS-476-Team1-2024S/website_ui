@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { StyleSheet, Button, View, SafeAreaView, Text, TextInput } from 'react-native';
 import AddUser from '../hooks/AddUser';
 import CheckUser from '../hooks/CheckUser';
 
@@ -29,48 +28,28 @@ const Signup = () => {
 
     return (
         <div className="content">
-            <h1>Sign Up</h1>
-            <SafeAreaView style={styles.container}>
-                <View>
-                    <Text>Username:</Text>
-                    <TextInput
-                        style={styles.input}
-                        value={username}
-                        onChangeText={setUsername} // This will update the state on text change
-                        autoCapitalize="none"
-                    />
-                </View>
-                <View>
-                    <Text>Password:</Text>
-                    <TextInput
-                        style={styles.input}
-                        value={password}
-                        onChangeText={setPassword} // This will update the state on text change
-                        secureTextEntry // Hides the password
-                        autoCapitalize="none"
-                    />
-                </View>
-                <Button
-                    title="Sign Up"
-                    onPress={handleSignup}
-                />
-            </SafeAreaView>
+                    <h1>Signup</h1>
+                    <div className="userHolder"><a href='#user'>Login</a></div>
+                    <form className="userForm" onSubmit={handleSignup}>
+                        <input
+                            type="text"
+                            placeholder="Username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        /><br />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        /><br/>
+                        <button
+                            onClick={handleSignup}>
+                            Signup
+                        </button>
+                    </form>
         </div>
     );
-};
-// Stylesheet for the views and text inputs
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        marginHorizontal: 16,
-    },
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-    },
-});
+}
 
 export default Signup;
