@@ -7,6 +7,7 @@ import WriteToFile from '../hooks/WriteToFile';
 import LoggedInAs from '../components/LoggedInAs';
 import DeleteFileButton from '../components/DeleteFileButton';
 import CheckUser from '../hooks/CheckUser';
+import remarkGfm from 'remark-gfm';
 
 const Page = () => {
     const { path } = useParams();
@@ -74,7 +75,7 @@ const Page = () => {
                     <MDEditor value={pageContent} height="100%" visibleDragbar={false} onChange={setPageContent} />
                 ) : (pageContent === "") ? (
                     <h1>No content</h1>
-                ) : (<Markdown>{pageContent}</Markdown>)}
+                ) : (<Markdown remarkPlugins={[remarkGfm]}>{pageContent}</Markdown>)}
             </div>
     )
 };

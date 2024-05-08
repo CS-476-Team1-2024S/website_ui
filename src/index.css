@@ -88,13 +88,13 @@ code {
 }
 
 .leftButton{
-  position: fixed;
+  position: absolute;
   top:20px;
   left:200px;
 }
 
 .rightButton{
-  position: fixed;
+  position: absolute;
   top:20px;
   right:200px;
 }
@@ -113,21 +113,22 @@ code {
 }
 
 .logo{
-  position: fixed;
+  position: absolute;
   width: 140px;
   height: 140px;
   top: 10px;
-  left: 25px;
+  left: 16px;
 }
 
 .createDirectoryButton{
-  position: fixed;
-  top: 170px;
-  left: 38px;
+  position: absolute;
+  top: 160px;
+  left: 22px;
+  width: 120px;
 }
 
 .userHolder{
-  position: fixed;
+  position: absolute;
   top: 10px;
   right: 10px;
 }
@@ -165,7 +166,7 @@ input{
 /* CSS for darkmode button after this point */
 
 .theme-button {
-  position: fixed;
+  position: absolute;
   box-sizing: border-box;
   top: 50px;
   right: 50px;
@@ -245,14 +246,22 @@ input{
 }
 
 .homepage{
-  position: fixed;
+  position: absolute;
   margin: 10px;
   padding-left: 10px;
   padding-right: 20px;
 }
 
+.leftSectionHome{
+  text-align: left;
+}
+
+.rightSectionHome{
+  text-align: left;
+}
+
 .content{
-  position: fixed;
+  position: absolute;
   padding: 100px;
 }
 
