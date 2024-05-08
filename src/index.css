@@ -155,14 +155,6 @@ input{
   padding: 30px;
 }
 
-.leftSectionHome h2{
-  text-align: center;
-}
-
-.rightSectionHome h2{
-  text-align: center;
-}
-
 /* CSS for darkmode button after this point */
 
 .theme-button {
@@ -170,6 +162,24 @@ input{
   box-sizing: border-box;
   top: 50px;
   right: 50px;
+}
+
+.pageHeader{
+  position: absolute;
+  top: 120px;
+  left: 8px;
+}
+
+.markdownContent{
+  position: absolute;
+  top: 180px;
+  left: 10px;
+}
+
+.editor{
+  position: absolute;
+  top: 180px;
+  left: 10px;
 }
 
 .theme-toggle {
@@ -263,18 +273,6 @@ input{
 .content{
   position: absolute;
   padding: 100px;
-}
-
-.content h1{
-  text-align: center;
-}
-
-.content p{
-  text-align: center;
-}
-
-.content a{
-  text-align: center;
 }
 
 .dirTable{
